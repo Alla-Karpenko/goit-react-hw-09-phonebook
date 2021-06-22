@@ -1,0 +1,26 @@
+
+.Form {
+    display: block;
+}
+.Button {
+    display: block;
+    margin: 30px auto;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #07e690;
+    color: rgb(8, 46, 68);
+    border: 0;
+    outline: 0 !important;
+}
+.Label {
+    margin-right: 20px;
+}
+.Input {
+    width: 200px;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #f1f1bf;
+    outline: 0 !important;
+}
