@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { authOperations } from "../redux/auth";
 
 const styles = {
@@ -13,43 +13,41 @@ const styles = {
   },
 };
 
-class LoginView extends Component {
-  state = {
-    email: "",
-    password: "",
+export default function LoginView() {
+   const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState("");
+  
+  const handleEmailChange = evt => {
+    setEmail(evt.target.value)
+  }
+  const handlePasswordChange = (evt) => {
+    setPassword(evt.target.value);
   };
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    this.props.onLogin(this.state);
-
-    this.setState({ name: "", email: "", password: "" });
+    dispatch(authOperations.logIn({ email, password }));
+   
+    setPassword("");
+    setEmail("");
+  
   };
 
-  render() {
-    const { email, password } = this.state;
 
     return (
       <div>
         <h1>Страница логина</h1>
 
-        <form
-          onSubmit={this.handleSubmit}
-          style={styles.form}
-          autoComplete="off"
-        >
+        <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
           <label style={styles.label}>
             Почта
             <input
               type="email"
               name="email"
               value={email}
-              onChange={this.handleChange}
+              onChange={handleEmailChange}
             />
           </label>
 
@@ -59,7 +57,7 @@ class LoginView extends Component {
               type="password"
               name="password"
               value={password}
-              onChange={this.handleChange}
+              onChange={handlePasswordChange}
             />
           </label>
 
@@ -67,11 +65,6 @@ class LoginView extends Component {
         </form>
       </div>
     );
-  }
 }
 
-const mapDispatchToProps = {
-  onLogin: authOperations.logIn,
-};
 
-export default connect(null, mapDispatchToProps)(LoginView);

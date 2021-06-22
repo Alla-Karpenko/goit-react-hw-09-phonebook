@@ -1,5 +1,5 @@
 import React from "react";
-import img from './img.jpg'
+
 
 const HomeView = () => (
   <div>
@@ -9,7 +9,6 @@ const HomeView = () => (
         💁‍♀️
       </span>
     </h1>
-    {/* <img src={img} alt="" width="600" /> */}
   </div>
 );
 
