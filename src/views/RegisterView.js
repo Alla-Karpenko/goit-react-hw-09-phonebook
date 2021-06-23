@@ -45,7 +45,12 @@ export default function RegisterView() {
       <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
         <label style={styles.label}>
           Имя
-        <input type="text" name="name" value={name} onChange={handleName} />
+          <input
+            type="text"
+            name="name"
+            value={name || ""}
+            onChange={handleName}
+          />
         </label>
 
         <label style={styles.label}>
@@ -53,7 +58,7 @@ export default function RegisterView() {
           <input
             type="email"
             name="email"
-            value={email}
+            value={email || ""}
             onChange={handlEmail}
           />
         </label>
@@ -63,7 +68,7 @@ export default function RegisterView() {
           <input
             type="password"
             name="password"
-            value={password}
+            value={password || ""}
             onChange={handlePassword}
           />
         </label>
